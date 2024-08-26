@@ -1,6 +1,7 @@
 import { object, string } from "yup";
-import { NetflixInput } from "../../../components/NetflixInput";
+import { NetflixInput } from "./NetflixInput";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,6 +22,8 @@ const userSchema = object({
 });
 
 export function FormLogin() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -29,7 +32,9 @@ export function FormLogin() {
     resolver: yupResolver(userSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    navigate("/home");
+  };
 
   return (
     <div className="m-auto py-12 px-16 max-w-[28.125rem] bg-black/70 rounded z-20 relative">
