@@ -1,47 +1,27 @@
 import React from "react";
 import Slider from "react-slick";
 
-export function Carousel() {
+export function Carousel({ data }) {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 1
+    slidesToScroll: 3,
   };
-  return (
+  console.log(data?.results);  return (
     <div className="slider-container">
       <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-        <div>
-          <h3>7</h3>
-        </div>
-        <div>
-          <h3>8</h3>
-        </div>
-        <div>
-          <h3>9</h3>
-        </div>
+        {data?.results.map((filme) => (
+          <div key={filme.id}>
+            <img
+              src={`
+https://image.tmdb.org/t/p/w500/${filme?.poster_path}`}
+              alt=""
+            />
+          </div>
+        ))}
       </Slider>
     </div>
   );
 }
-
-
