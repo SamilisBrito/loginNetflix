@@ -59,7 +59,6 @@ export function Home() {
 
   return (
     <>
-    
       <Carousel data={action} />
       <Carousel data={comedy} />
       <Carousel data={mostVoted} />
