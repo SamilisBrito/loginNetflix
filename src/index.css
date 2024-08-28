@@ -8,6 +8,11 @@
     background-size: cover;
     position: relative;
   }
+
+  html {
+    background: black;
+  }
+
   .bg-custom::after {
     content: "";
     position: absolute;
