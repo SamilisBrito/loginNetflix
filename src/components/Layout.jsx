@@ -1,11 +1,15 @@
 import { Outlet } from "react-router-dom";
+import { Header } from "./Header";
+import { ContextProvider } from "./Context";
 
-export function Layout({ children }) {
+export function Layout() {
   return (
-    <div>
-      <h1>Header</h1>
-      <Outlet />
+    <>
+      <ContextProvider>
+        <Header />
+        <Outlet />
+      </ContextProvider>
       <h1>Footer</h1>
-    </div>
+    </>
   );
 }
