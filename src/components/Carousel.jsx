@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { Movie } from "./Movie";
 
 export function Carousel({ data }) {
   const settings = {
@@ -9,17 +10,11 @@ export function Carousel({ data }) {
     slidesToShow: 6,
     slidesToScroll: 3,
   };
-  console.log(data?.results);  return (
+  return (
     <div className="slider-container">
       <Slider {...settings}>
-        {data?.results.map((filme) => (
-          <div key={filme.id}>
-            <img
-              src={`
-https://image.tmdb.org/t/p/w500/${filme?.poster_path}`}
-              alt=""
-            />
-          </div>
+        {data?.results.map((movie) => (
+          <Movie key={movie.id} movie={movie} />
         ))}
       </Slider>
     </div>
