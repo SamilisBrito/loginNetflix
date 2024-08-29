@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import { Context } from "../../components/Context";
+import { Context } from "../../context/Context";
 import { Movie } from "../../components/Movie";
+import { DetailsModal } from "../../components/DetailsModal";
 
 export function Search() {
-  const { query } = useContext(Context);
+  const { query, isOpen } = useContext(Context);
   const { data, loading, error, request } = useFetch();
 
   useEffect(() => {
@@ -23,13 +24,13 @@ export function Search() {
         }
       );
   }
-  console.log(query, data);
 
   return (
     <div className="flex flex-wrap gap-5">
       {data?.results.map((movie) => (
         <Movie key={movie.id} movie={movie} />
       ))}
+      {isOpen && <DetailsModal/>}
     </div>
   );
 }
