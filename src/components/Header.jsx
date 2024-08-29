@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { Context } from "./Context";
+import { Context } from "../context/Context";
 
 export function Header() {
   const { query, setQuery } = useContext(Context);
