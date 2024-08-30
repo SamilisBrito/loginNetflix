@@ -4,12 +4,12 @@ import { ContextProvider } from "../context/Context";
 
 export function Layout() {
   return (
-    <>
+    <div className="px-5">
       <ContextProvider>
         <Header />
         <Outlet />
+        <h1>Footer</h1>
       </ContextProvider>
-      <h1>Footer</h1>
-    </>
+    </div>
   );
 }

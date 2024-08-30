@@ -26,7 +26,7 @@ export function Search() {
   }
 
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className="flex flex-wrap gap-2">
       {data?.results.map((movie) => (
         <Movie key={movie.id} movie={movie} />
       ))}

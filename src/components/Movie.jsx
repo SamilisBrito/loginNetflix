@@ -5,8 +5,9 @@ export function Movie({ movie }) {
   const { onMovieClick } = useContext(Context);
 
   return (
-    <div key={movie.id} className=" text-white">
+    <div className="text-white mr-2 ">
       <img
+      className="w-full rounded"
         src={`
 https://image.tmdb.org/t/p/w500/${movie?.backdrop_path}`}
         alt={movie.title}
