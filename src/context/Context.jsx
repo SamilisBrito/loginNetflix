@@ -9,7 +9,7 @@ function ContextProvider({ children }) {
 
   function onMovieClick(movie) {
     setMovieDetails(movie);
-    setIsOpen(!isOpen);
+    setIsOpen(true);
   }
 
   return (
