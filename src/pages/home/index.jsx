@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Carousel } from "../../components/Carousel";
+import { Carousel } from "../../components/carousel";
 import { useFetch } from "../../hooks/useFetch";
 
 const GENRE = {
@@ -59,9 +59,9 @@ export function Home() {
 
   return (
     <>
-      <Carousel data={action} />
-      <Carousel data={comedy} />
-      <Carousel data={mostVoted} />
+      <Carousel data={action} title={"Ação"} />
+      <Carousel data={comedy} title={"Comédia"} />
+      <Carousel data={mostVoted} title={"Mais votados"} />
     </>
   );
 }
