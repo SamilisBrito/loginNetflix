@@ -32,7 +32,7 @@ export function FormLogin() {
     resolver: yupResolver(userSchema),
   });
 
-  const onSubmit = (data) => {
+  function onSubmit (data) {
     navigate("/home");
   };
 
