@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { Context } from "../context/Context";
+import { useModalMovie } from "../hooks/useModalMovie";
 
 export function Header() {
-  const { query, setQuery } = useContext(Context);
+  const { query, setQuery } = useModalMovie();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,11 +17,11 @@ export function Header() {
   }, [query, navigate]);
 
   return (
-    <header className="h-16 flex items-center bg-gradient-to-b from-black from-0% via-black/40 via-100% to-black justify-between">
+    <header className="fixed w-full h-16 flex items-center bg-gradient-to-b from-black/10 from-0% via-black/20 via-100% to-black justify-between">
       <img className="max-w-24" src={logo} alt="Netflix logo" />
 
       <form
-        className="bg-red-700 p-[0.125rem] flex items-center gap-3 border border-transparent focus-within:border-white text-white"
+        className="bg-black p-[0.125rem] flex items-center gap-3 border border-transparent focus-within:border-white text-white"
         role="search"
       >
         <FiSearch />
