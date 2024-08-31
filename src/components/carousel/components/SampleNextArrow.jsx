@@ -7,7 +7,6 @@ export function SampleNextArrow(props) {
       className={`${className}`}
       style={{
         ...style,
-        display: "block",
         marginRight: "20px",
         height: "101%",
         width: "3%",

@@ -7,7 +7,6 @@ export function SamplePrevArrow(props) {
       className={className}
       style={{
         ...style,
-        display: "block",
         marginLeft: "16px",
         height: "101%",
         width: "3%",
