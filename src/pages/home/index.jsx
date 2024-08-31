@@ -27,15 +27,22 @@ export function Home() {
     request: mostVotedRequest,
   } = useFetch();
 
+  const {
+    data: heroTrailer,
+    loading: heroTrailerLoading,
+    error: heroTrailerError,
+    request: heroTrailerRequest,
+  } = useFetch();
+
   useEffect(() => {
+    getHeroTrailer();
     getData(actionRequest, GENRE.action, 1);
     getData(comedyRequest, GENRE.comedy, 2);
     getMostVoted();
   }, []);
-
   async function getData(request, genre, page) {
     await request(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}&include_adult=false&language=en-US&page=${page}`,
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}&include_adult=false&language=pt&page=${page}`,
       {
         headers: {
           accept: "application/json",
@@ -47,7 +54,18 @@ export function Home() {
 
   async function getMostVoted() {
     await mostVotedRequest(
-      `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&language=pt&page=1`,
+      {
+        headers: {
+          accept: "application/json",
+          authorization: `Bearer ${import.meta.env.VITE_APP_TMDB_API_TOKEN}`,
+        },
+      }
+    );
+  }
+  async function getHeroTrailer() {
+    await heroTrailerRequest(
+      `https://api.themoviedb.org/3/movie/889737/videos?language=pt-BR`,
       {
         headers: {
           accept: "application/json",
@@ -59,6 +77,17 @@ export function Home() {
 
   return (
     <>
+      {heroTrailer && heroTrailer.results.length > 0 && (
+        <div className="video-container">
+          <iframe
+            className="w-full h-screen"
+            src={`https://www.youtube.com/embed/${heroTrailer.results[0].key}?controls=0&showinfo=0&rel=0&modestbranding=1&autoplay=1`}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
+
       <Carousel data={action} title={"Ação"} />
       <Carousel data={comedy} title={"Comédia"} />
       <Carousel data={mostVoted} title={"Mais votados"} />
