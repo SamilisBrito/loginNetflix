@@ -17,19 +17,28 @@ const INFORMATION = [
 
 export function Footer() {
   return (
-    <footer className="text-neutral-400 lg:mt-28 max-w-5xl m-auto text-sm sm:text-base ">
+    <footer className="text-neutral-400 lg:mt-28 max-w-5xl m-auto text-sm sm:text-base mt-5 sm:mt-14">
       <div className="flex gap-2 text-white">
-        <FaFacebookF className="text-xl" />
-        <FaInstagram className="text-xl" />
-        <FaTwitter className="text-xl" />
-        <FaYoutube className="text-xl" />
+        <a href="#" rel="noopener noreferrer">
+          <FaFacebookF className="text-xl" />
+        </a>
+        <a href="#" rel="noopener noreferrer">
+          <FaInstagram className="text-xl" />
+        </a>
+        <a href="#" rel="noopener noreferrer">
+          <FaTwitter className="text-xl" />
+        </a>
+        <a href="#" rel="noopener noreferrer">
+          <FaYoutube className="text-xl" />
+        </a>
       </div>
       <div className="grid gap-1 sm:gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 py-2">
         {INFORMATION.map((information) => (
-          <a href="#" className=" hover:underline">{information}</a>
+          <a key={information} href="#" className=" hover:underline">
+            {information}
+          </a>
         ))}
       </div>
-     
       <button className="bg-transparent p-3 border border-neutral-600 rounded">
         Código do serviço
       </button>
