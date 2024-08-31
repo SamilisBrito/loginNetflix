@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Carousel } from "../../components/carousel";
 import { useFetch } from "../../hooks/useFetch";
+import { Content } from "../../components/content";
+import { Hero } from "../../components/hero";
 
 const GENRE = {
   action: 28,
@@ -77,20 +79,45 @@ export function Home() {
 
   return (
     <>
-      {heroTrailer && heroTrailer.results.length > 0 && (
-        <div className="video-container">
-          <iframe
-            className="w-full h-screen"
-            src={`https://www.youtube.com/embed/${heroTrailer.results[0].key}?controls=0&showinfo=0&rel=0&modestbranding=1&autoplay=1`}
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
-        </div>
-      )}
+      <Content
+        error={heroTrailerError}
+        loading={heroTrailerLoading}
+        data={heroTrailer}
+        renderContent={(heroTrailer) => (
+          <Hero heroMovie={heroTrailer.results[0].key} />
+        )}
+        errorMessage={"Erro ao carregar o vídeo"}
+      />
 
-      <Carousel data={action} title={"Ação"} />
-      <Carousel data={comedy} title={"Comédia"} />
-      <Carousel data={mostVoted} title={"Mais votados"} />
+      <section className="flex flex-col gap-5 sm:gap-14">
+        <Content
+          error={actionError}
+          loading={actionLoading}
+          data={action}
+          renderContent={(action) => <Carousel data={action} title={"Ação"} />}
+          errorMessage={"Erro ao carregar"}
+        />
+
+        <Content
+          error={comedyError}
+          loading={comedyLoading}
+          data={comedy}
+          renderContent={(comedy) => (
+            <Carousel data={comedy} title={"Comédia"} />
+          )}
+          errorMessage={"Erro ao carregar"}
+        />
+
+        <Content
+          error={mostVotedError}
+          loading={mostVotedLoading}
+          data={mostVoted}
+          renderContent={(mostVoted) => (
+            <Carousel data={mostVoted} title={"Mais votados"} />
+          )}
+          errorMessage={"Erro ao carregar"}
+        />
+      </section>
     </>
   );
 }
