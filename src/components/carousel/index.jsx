@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Slider from "react-slick";
-import { Movie } from "../Movie";
-import { Context } from "../../context/Context";
-import { DetailsModal } from "../DetailsModal";
+import { Movie } from "../ImageMovie";
+
 import { SampleNextArrow } from "./components/SampleNextArrow";
 import { SamplePrevArrow } from "./components/SamplePrevArrow";
 
 export function Carousel({ data, title }) {
-  const { isOpen } = useContext(Context);
-
   const settings = {
     // dots: true,
     infinite: true,
@@ -54,7 +51,6 @@ export function Carousel({ data, title }) {
           <Movie key={movie.id} movie={movie} />
         ))}
       </Slider>
-      {isOpen && <DetailsModal />}
     </div>
   );
 }

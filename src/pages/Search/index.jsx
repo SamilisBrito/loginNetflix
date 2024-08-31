@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
+import { Movie } from "../../components/ImageMovie";
 import { useFetch } from "../../hooks/useFetch";
-import { Context } from "../../context/Context";
-import { Movie } from "../../components/Movie";
-import { DetailsModal } from "../../components/DetailsModal";
+import { useModalMovie } from "../../hooks/useModalMovie";
 
 export function Search() {
-  const { query, isOpen } = useContext(Context);
+  const { query, isOpen } = useModalMovie();
   const { data, loading, error, request } = useFetch();
 
   useEffect(() => {
@@ -15,7 +14,7 @@ export function Search() {
   async function getData() {
     if (query !== "")
       await request(
-        `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
+        `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=pt&page=1`,
         {
           headers: {
             accept: "application/json",
@@ -30,7 +29,6 @@ export function Search() {
       {data?.results.map((movie) => (
         <Movie key={movie.id} movie={movie} />
       ))}
-      {isOpen && <DetailsModal/>}
     </div>
   );
 }
