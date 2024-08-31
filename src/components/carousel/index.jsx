@@ -44,7 +44,7 @@ export function Carousel({ data, title }) {
   };
 
   return (
-    <div className="pb-11 text-white">
+    <div className="text-white">
       <h2 className="font-semibold mb-3">{title}</h2>
       <Slider {...settings}>
         {data?.results.map((movie) => (
