@@ -17,7 +17,7 @@ export function Header() {
   }, [query, navigate]);
 
   return (
-    <header className="fixed w-full h-16 flex items-center bg-gradient-to-b from-black/10 from-0% via-black/20 via-100% to-black justify-between">
+    <header className="fixed z-50 w-full h-16 flex items-center bg-gradient-to-b from-black/10 from-0% via-black/20 via-100% to-black justify-between pr-5">
       <img className="max-w-24" src={logo} alt="Netflix logo" />
 
       <form
